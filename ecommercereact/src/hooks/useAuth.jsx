@@ -1,6 +1,6 @@
-import { createContext } from "react";
+import { useContext } from "react";
 import { StateContext } from "../contexts/ContextProvider";
 
-const useAuth = () => createContext(StateContext);
+const useAuth = () => useContext(StateContext);
 
 export default useAuth;
