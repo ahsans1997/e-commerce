@@ -6,6 +6,7 @@ import GuestLayout from "./layouts/GuestLayout";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
 import Error from "./views/errors/404";
+import AdminLayout from "./layouts/AdminLayout";
 
 const Router = createBrowserRouter([
     {
@@ -18,6 +19,16 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/cert',
+                element: <Certs />
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                path: '/admin/cert',
                 element: <Certs />
             }
         ]

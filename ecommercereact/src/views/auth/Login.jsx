@@ -1,12 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import axiosClient from "../../axiosClient";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import PreLoader from "../../components/preloder/PreLoader";
 
 
 const Login = () => {
 
   const {setToken} = useAuth();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const email = useRef();
   const password = useRef();
@@ -17,17 +21,20 @@ const Login = () => {
       email: email.current.value,
       password: password.current.value
     }
+    setLoading(true);
     axiosClient.post('/login', payload)
       .then(res => {
         setToken(res.access_token);
       })
       .catch(err => {
-        console.log(err);
+        setError('Email or password is incorrect');
+        setLoading(false);
       })
   }
 
   return (
     <div>
+      {loading && <PreLoader />}
       <div className="container">
         <div className="row">
           <div className="col-md-7 m-auto">
@@ -36,6 +43,7 @@ const Login = () => {
                 <h2>Login</h2>
               </div>
               <div className="card-body">
+                {error && <div className="alert alert-danger">{error}</div>}
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label>Email address</label>
