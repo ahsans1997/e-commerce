@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Home from "./views/Home";
 import Certs from "./views/Certs";
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -7,6 +7,8 @@ import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
 import Error from "./views/errors/404";
 import AdminLayout from "./layouts/AdminLayout";
+import Dashboard from "./views/admin/dashboard/Dashboard";
+import AdminCerts from "./views/admin/certs/Certs";
 
 const Router = createBrowserRouter([
     {
@@ -28,8 +30,16 @@ const Router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
             {
+                path: '/admin',
+                element: <Navigate to="/admin/dashboard" />
+            },
+            {
+                path: '/admin/dashboard',
+                element: <Dashboard />
+            },
+            {
                 path: '/admin/cert',
-                element: <Certs />
+                element: <AdminCerts />
             }
         ]
     },

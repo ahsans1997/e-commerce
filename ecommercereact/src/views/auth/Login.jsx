@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axiosClient from "../../axiosClient";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ const Login = () => {
       .then(res => {
         setToken(res.access_token);
       })
-      .catch(err => {
+      .catch(() => {
         setError('Email or password is incorrect');
         setLoading(false);
       })

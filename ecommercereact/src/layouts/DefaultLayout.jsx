@@ -14,12 +14,8 @@ const DefaultLayout = () => {
 
     const payload = token.split('.')[1];
     const info = JSON.parse(atob(payload));
-    // console.log(info);
-  
-    // const {sub} = DecodeToken();
-
+    
     const [user, setUser] = useState('');
-
     const [loading, setLoading] = useState(false);
 
 
@@ -31,11 +27,8 @@ const DefaultLayout = () => {
             setUser(data.user);
             setLoading(false);
         })
-    }, []);
+    }, [info.sub]);
 
-    if(user.role === 1) {
-        return <Navigate to="/admin" />;
-    }
 
     return (
         <div>

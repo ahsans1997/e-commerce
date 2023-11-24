@@ -1,0 +1,33 @@
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul li{
+    width: 100%;
+}
+
+ul li a{
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    padding: 20px;
+    color: #fff;
+    background: #2c3e50;
+    border-bottom: 1px solid #fff;
+    transition: .4s;
+}
+
+ul li a:hover{
+    background: #2980b9;
+}
+
+ul li a span{
+    margin-left: 10px;
+}
+
+.active{
+    background: #2980b9;
+}
