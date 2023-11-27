@@ -9,52 +9,37 @@ import Error from "./views/errors/404";
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./views/admin/dashboard/Dashboard";
 import AdminCerts from "./views/admin/certs/Certs";
+import Products from "./views/admin/products/Products";
+import ProductCreate from "./views/admin/products/ProductCreate";
 
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <DefaultLayout />,
         children: [
-            {
-                path: '/',
-                element: <Home />
-            },
-            {
-                path: '/cert',
-                element: <Certs />
-            }
+            {path: '/', element: <Home />},
+            {path: '/cert', element: <Certs />}
         ]
     },
     {
         path: '/admin',
         element: <AdminLayout />,
         children: [
-            {
-                path: '/admin',
-                element: <Navigate to="/admin/dashboard" />
-            },
-            {
-                path: '/admin/dashboard',
-                element: <Dashboard />
-            },
-            {
-                path: '/admin/cert',
-                element: <AdminCerts />
-            }
+            {path: '/admin', element: <Navigate to="/admin/dashboard" />},
+            {path: '/admin/dashboard', element: <Dashboard />},
+            //Products
+            {path: '/admin/products', element: <Products />,},
+            {path: '/admin/products/create', element: <ProductCreate />},
+            //Certs
+            {path: '/admin/cert', element: <AdminCerts />}
         ]
     },
     {
         path: '/',
         element: <GuestLayout />,
         children: [
-            {
-                path: '/login',
-                element: <Login />
-            },
-            {
-                path: '/register',
-                element: <Register />
-            }
+            {path: '/login', element: <Login />},
+            {path: '/register', element: <Register />}
         ]
     },
     {

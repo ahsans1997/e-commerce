@@ -8,9 +8,9 @@ import Navbar from './admin/Navbar';
 
 const AdminLayout = () => {
 
-    const {token} = useAuth();
+    const { token } = useAuth();
 
-    if(!token) {
+    if (!token) {
         return <Navigate to="/login" />;
     }
 
@@ -24,14 +24,14 @@ const AdminLayout = () => {
     useEffect(() => {
         setLoading(true);
         axiosClient.get(`/user/${info.sub}`)
-        .then(data => {
-            // console.log(data.user);
-            setUser(data.user);
-            setLoading(false);
-        })
+            .then(data => {
+                // console.log(data.user);
+                setUser(data.user);
+                setLoading(false);
+            })
     }, [info.sub]);
-    
-    if(user.role === 2) {
+
+    if (user.role === 2) {
         return <Navigate to="/" />;
     }
 
@@ -39,9 +39,15 @@ const AdminLayout = () => {
         <div className='d-flex'>
             {loading && <PreLoader />}
             <Sidebar />
-            <div style={{flex:"1 1 auto", display:"flex", flexFlow:"column", height:"100vh", overflowY:"hidden"}}>
+            <div style={{ flex: "1 1 auto", display: "flex", flexFlow: "column", height: "100vh", overflowY: "hidden" }}>
                 <Navbar user={user} />
-                <Outlet />
+                <div className='' style={{ marginLeft: '20px', marginTop: '15px', marginRight: '15px' }}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <Outlet />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

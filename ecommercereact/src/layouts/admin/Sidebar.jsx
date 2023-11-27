@@ -18,6 +18,7 @@ const Sidebar = () => {
                     <nav>
                         <ul>
                             <li><NavLink to='/admin/dashboard'><i className="fa-solid fa-gauge"></i><span className='menu-name'>Dashboard</span></NavLink></li>
+                            <li><NavLink to='/admin/products'><i className="fa-solid fa-cart-shopping"></i><span className='menu-name'>Products</span></NavLink></li>
                             <li><NavLink to='/admin/cert'><i className="fa-solid fa-cart-shopping"></i><span className='menu-name'>Certs</span></NavLink></li>
                         </ul>
                     </nav>
