@@ -41,7 +41,7 @@ const AdminLayout = () => {
             <Sidebar />
             <div style={{ flex: "1 1 auto", display: "flex", flexFlow: "column", height: "100vh", overflowY: "hidden" }}>
                 <Navbar user={user} />
-                <div className='' style={{ marginLeft: '20px', marginTop: '15px', marginRight: '15px' }}>
+                <div className='' style={{ marginLeft: '20px', marginTop: '15px', marginRight: '15px', overflowY: "scroll", overflowX: "hidden" }}>
                     <div className="row">
                         <div className="col-md-12">
                             <Outlet />

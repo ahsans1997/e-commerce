@@ -32,3 +32,6 @@ Route::group(['middleware' => 'api',], function ($router) {
 Route::group(['middleware' => 'api', 'prefix' => 'admin'], function () {
     Route::apiResource('products', ProductController::class);
 });
+
+Route::get('/products', [ProductController::class, 'products']);
+Route::get('/products/{id}', [ProductController::class, 'productDetails']);

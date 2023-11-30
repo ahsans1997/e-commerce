@@ -11,6 +11,7 @@ import Dashboard from "./views/admin/dashboard/Dashboard";
 import AdminCerts from "./views/admin/certs/Certs";
 import Products from "./views/admin/products/Products";
 import ProductCreate from "./views/admin/products/ProductCreate";
+import ProductDetails from "./views/products/ProductDetails";
 
 const Router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ const Router = createBrowserRouter([
         element: <DefaultLayout />,
         children: [
             {path: '/', element: <Home />},
+            {path: 'product-details/:id', element: <ProductDetails />},
             {path: '/cert', element: <Certs />}
         ]
     },

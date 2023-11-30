@@ -13,7 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return response()->json([
+            'products' => $products,
+        ], 200);
     }
 
     /**
@@ -46,7 +49,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = $product->id . '.' . $image->getClientOriginalExtension();
-            $location = Storage::putFileAs('public/products', $image, $imageName);
+            $location = Storage::putFileAs('products', $image, $imageName);
             $product->image = $location;
             $product->save();
         }
@@ -88,5 +91,27 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function products()
+    {
+        $products = Product::all();
+        return response()->json([
+            'products' => $products,
+        ], 200);
+    }
+
+    public function productDetails($id)
+    {
+        
+        $product = Product::find($id);
+        $image = env('APP_URL').'/storage/'.$product->image;
+        $data = [
+            'product' => $product,
+            'image' => $image,
+        ];
+        return response()->json([
+            'product' => $data,
+        ], 200);
     }
 }

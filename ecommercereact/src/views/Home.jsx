@@ -1,8 +1,13 @@
+import Product from "./products/Product";
 
 const Home = () => {
     return (
-        <div>
-            home
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-12">
+                    <Product />
+                </div>
+            </div>
         </div>
     );
 };
