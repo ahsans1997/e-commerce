@@ -3,6 +3,7 @@ import axiosClient from "../../axiosClient";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import PreLoader from "../../components/preloder/PreLoader";
+import Cookies from "js-cookie";
 
 
 const Login = () => {
@@ -25,6 +26,8 @@ const Login = () => {
     axiosClient.post('/login', payload)
       .then(res => {
         setToken(res.access_token);
+        Cookies.set('USER_ID', res.user.id);
+        console.log(res);
       })
       .catch(() => {
         setError('Email or password is incorrect');

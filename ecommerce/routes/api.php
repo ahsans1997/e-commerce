@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CertController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,9 +30,16 @@ Route::group(['middleware' => 'api',], function ($router) {
 
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => 'auth:api', 'prefix' => 'admin'], function () {
     Route::apiResource('products', ProductController::class);
 });
 
 Route::get('/products', [ProductController::class, 'products']);
 Route::get('/products/{id}', [ProductController::class, 'productDetails']);
+
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::apiResource('certs', CertController::class);
+    Route::get('certProducts/{user_id}', [CertController::class, 'certProducts']);
+});
+
